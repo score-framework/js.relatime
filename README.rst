@@ -115,25 +115,26 @@ API
 ===
 
 function ``score.relatime(date, relDate, grammar)``
-    Returns a humanized string representation for the time span of ``date`` -
-    ``relDate``, using an optional ``grammar`` object.
+    Returns a humanized string representation for the time span between a given
+    *date* and the current time.
 
+    The *date* can be an instance of ``Date()``, a timestamp or a
+    string that will be parsed by the browser's native Date() function. But
+    be careful, `cross-browser JavaScript Date parsing behavior
+    <http://dygraphs.com/date-formats.html>`_ is an issue on older Browsers.
 
-    ``date`` can be an instance of **Date()**, a **timestamp** or a **string** that
-    will be parsed by the browser's native Date() function. But be careful, `cross-browser
-    JavaScript Date parsing behavior <http://dygraphs.com/date-formats.html>`_ is an issue on older Browsers .
+    The optional *relDate* accepts the same formats as *date* and will serve as
+    the base date to compare the actual date to.
 
-    ``relDate`` *(optional)* - accepts the same formats as ``date``, defaults to new Date()
-
-    ``grammar`` *(optional)* - object of key/value pairs, works as a modifier for
-    any existing grammars that have been bound to the function.
+    It is also possible to override (parts of) the conversion strings by
+    passing a *grammar* object. The expected format for this object can be
+    found in the Grammar section, above.
 
 function ``score.relatime.create(grammar)``
-    Returns a new function of ``score.relatime``, bound to the given ``grammar``.
+    Returns a new ``score.relatime`` function, bound to the given *grammar*.
 
-    ``grammar`` - key/value pairs, works as key-modifier for
-    any existing grammar that has been bound to the function.
-
+    The expected format for the *grammar* argument can be found in the Grammar
+    section, above.
 
 
 License

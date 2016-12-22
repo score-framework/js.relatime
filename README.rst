@@ -14,7 +14,7 @@ score.relatime
 
 .. _js_relatime:
 
-A lightweight relative time to string humanizer inspired by Moment.js
+Lightweight humanized relative time formatting, inspired by Moment.js
 
 Quickstart
 ==========
@@ -38,8 +38,29 @@ Details
 Grammar
 -------
 
-An Object consisting of key/value pairs used to format the time span. Negative
-time spans will use the ``past`` base string, positive time spans ``future``.
+An Object consisting of key/value pairs used to format the time span.
+
+**default grammar**
+
+.. code-block:: javascript
+
+    {
+        future: 'in %s',
+        past: '%s ago',
+        s: 'a few seconds',
+        m: 'a minute',
+        mm: '%d minutes',
+        h: 'an hour',
+        hh: '%d hours',
+        d: 'a day',
+        dd: '%d days',
+        M: 'a month',
+        MM: '%d months',
+        y: 'a year',
+        yy: '%d years'
+    }
+
+Negative time spans will use the ``past`` key, positive time spans the ``future`` key as the base string.
 
 **changing the base string**
 
@@ -56,9 +77,7 @@ time spans will use the ``past`` base string, positive time spans ``future``.
     score.relatime("2015-10-21", "2013-10-21", grammar);
     // "Marty McFly will arrive in the future in 2 years"
 
-Grammars can be used for **i18n** or other usecases requiring custom string formatting.
-
-**i18n example**
+Grammars can be used for **i18n**:
 
 .. code-block:: javascript
 

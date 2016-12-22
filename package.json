@@ -1,6 +1,6 @@
 {
   "name": "score.relatime",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Relative time formatting inspired by momentjs",
   "main": "relatime.js",
   "directories": {

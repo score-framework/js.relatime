@@ -182,7 +182,7 @@
 
         var relatime = create();
 
-        relatime.__version__ = '0.0.1';
+        relatime.__version__ = '0.0.2';
 
         return relatime;
 

@@ -8,13 +8,113 @@ libraries for the development of large scale web projects. Powered by strg.at_.
 .. _strg.at: http://strg.at
 
 
-**********
+**************
 score.relatime
-**********
+**************
 
 .. _js_relatime:
 
-This module is a work in progress, thus currently poorly documented :-/
+A lightweight relative time to string humanizer inspired by Moment.js
+
+Quickstart
+==========
+
+.. code-block:: html
+
+    <script src="score.init.js"></script>
+    <script src="score.relatime.js"></script>
+    <script>
+        score.relatime(new Date());
+        // 'a few seconds ago';
+        score.relatime("2015-10-21", "1985-10-25");
+        // 'in 30 years';
+        score.relatime("1955-11-12", "1985-10-25", {future: "Marty travelled %s back to the future"});
+        // 'Marty travelled 30 years back to the future';
+    </script>
+
+Details
+=======
+
+Grammar
+-------
+
+An Object consisting of key/value pairs used to format the time span. Negative
+time spans will use the ``past`` base string, positive time spans ``future``.
+
+**changing the base string**
+
+.. code-block:: javascript
+
+    var grammar = {
+       past: "Marty McFly arrived in the future %s ago",
+       future: "Marty McFly will arrive in the future in %s"
+    }
+
+    score.relatime("2015-10-21", "2016-10-21", grammar);
+    // "Marty McFly arrived in the future a year ago"
+
+    score.relatime("2015-10-21", "2013-10-21", grammar);
+    // "Marty McFly will arrive in the future in 2 years"
+
+Grammars can be used for **i18n** or other usecases requiring custom string formatting.
+
+**i18n example**
+
+.. code-block:: javascript
+
+    var grammar = {
+        future : 'in %s',
+        past : 'vor %s',
+        s : 'ein paar Sekunden',
+        m: 'einer Minute',
+        mm : '%d Minuten',
+        h: 'einer Stunde',
+        hh : '%d Stunden',
+        d: '%d Tag',
+        dd: '%d Tagen',
+        M: 'einem Monat',
+        MM: '%d Monaten',
+        y: 'einem Jahr',
+        yy: '%d Jahren'
+    };
+
+    var localized = score.relatime.create(grammar);
+    localized(new Date());
+    // "vor ein paar Sekunden"
+
+
+
+**Changing the base string from the localized function**
+
+.. code-block:: javascript
+
+    var variant = localized.create({past: "seit %s"});
+    variant(new Date());
+    // "seit ein paar Sekunden"
+
+API
+===
+
+function ``score.relatime(date, relDate, grammar)``
+    Returns a humanized string representation for the time span of ``date`` -
+    ``relDate``, using an optional ``grammar`` object.
+
+
+    ``date`` can be an instance of **Date()**, a **timestamp** or a **string** that
+    will be parsed by the browser's native Date() function. But be careful, `cross-browser
+    JavaScript Date parsing behavior <http://dygraphs.com/date-formats.html>`_ is an issue on older Browsers .
+
+    ``relDate`` *optional* accepts the same formats as ``date``, defaults to new Date()
+
+    ``grammar`` *optional* object of key/value pairs, works as a modifier for
+    any existing grammars that have been bound to the function.
+
+function ``score.relatime.create(grammar)``
+    Returns a new function of ``score.relatime``, bound to the given ``grammar``.
+
+    ``grammar`` *optional* object of key/value pairs, works as a modifier for
+    any existing grammars that have been bound to the function.
+
 
 
 License

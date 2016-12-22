@@ -123,16 +123,16 @@ function ``score.relatime(date, relDate, grammar)``
     will be parsed by the browser's native Date() function. But be careful, `cross-browser
     JavaScript Date parsing behavior <http://dygraphs.com/date-formats.html>`_ is an issue on older Browsers .
 
-    ``relDate`` *optional* accepts the same formats as ``date``, defaults to new Date()
+    ``relDate`` *(optional)* - accepts the same formats as ``date``, defaults to new Date()
 
-    ``grammar`` *optional* object of key/value pairs, works as a modifier for
+    ``grammar`` *(optional)* - object of key/value pairs, works as a modifier for
     any existing grammars that have been bound to the function.
 
 function ``score.relatime.create(grammar)``
     Returns a new function of ``score.relatime``, bound to the given ``grammar``.
 
-    ``grammar`` *optional* object of key/value pairs, works as a modifier for
-    any existing grammars that have been bound to the function.
+    ``grammar`` - key/value pairs, works as key-modifier for
+    any existing grammar that has been bound to the function.
 
 
 

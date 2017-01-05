@@ -59,6 +59,7 @@
                 future: 'in %s',
                 past: '%s ago',
                 s: 'a few seconds',
+                ss: 'a few seconds',
                 m: 'a minute',
                 mm: '%d minutes',
                 h: 'an hour',
@@ -122,17 +123,19 @@
             months = abs(months);
             years = abs(years);
             var thresholds = DEFAULTS.thresholds;
-            var a = seconds < thresholds.s && ['s', seconds]  ||
-                minutes <= 1               && ['m']           ||
-                minutes < thresholds.m     && ['mm', minutes] ||
-                hours   <= 1               && ['h']           ||
-                hours   < thresholds.h     && ['hh', hours]   ||
-                days    <= 1               && ['d']           ||
-                days    < thresholds.d     && ['dd', days]    ||
-                months  <= 1               && ['M']           ||
-                months  < thresholds.M     && ['MM', months]  ||
-                years   <= 1               && ['y']           ||
-                                              ['yy', years];
+            var a = 
+                seconds <= 1 && ['s'] ||
+                seconds < thresholds.s && ['ss', seconds] ||
+                minutes <= 1 && ['m'] ||
+                minutes < thresholds.m && ['mm', minutes] ||
+                hours <= 1 && ['h'] ||
+                hours < thresholds.h && ['hh', hours] ||
+                days <= 1 && ['d'] ||
+                days < thresholds.d && ['dd', days] ||
+                months <= 1 && ['M'] ||
+                months < thresholds.M && ['MM', months] ||
+                years <= 1 && ['y'] ||
+                ['yy', years];
             if (a.length === 1) {
                 return grammar[futurePast].replace("%s", grammar[a[0]]);
             }

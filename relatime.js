@@ -1,5 +1,5 @@
 /**
- * Copyright © 2015,2016 STRG.AT GmbH, Vienna, Austria
+ * Copyright © 2015-2017 STRG.AT GmbH, Vienna, Austria
  *
  * This file is part of the The SCORE Framework.
  *
@@ -183,7 +183,7 @@
 
     var relatime = create();
 
-    relatime.__version__ = '0.0.3';
+    relatime.__version__ = '0.0.4';
 
     return relatime;
 

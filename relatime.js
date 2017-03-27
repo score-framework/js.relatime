@@ -120,7 +120,7 @@
         days = abs(round(days));
         months = abs(months);
         years = abs(years);
-        var thresholds = DEFAULTS.thresholds;
+        var thresholds = grammar.thresholds || DEFAULTS.thresholds;
         var a = 
             seconds <= 1 && ['s'] ||
             seconds < thresholds.s && ['ss', seconds] ||
